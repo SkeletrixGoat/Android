@@ -1,0 +1,97 @@
+package com.example.logowanie;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText imiePole;
+    private EditText nazwiskoPole;
+    private EditText emailPole;
+    private EditText hasloPole;
+    private Button rejestracja;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imiePole = findViewById(R.id.poleImie);
+        nazwiskoPole = findViewById(R.id.poleNazwisko);
+
+        emailPole = findViewById(R.id.poleEmail);
+        hasloPole = findViewById(R.id.poleHaslo);
+
+        rejestracja = findViewById(R.id.buttonRejestracja);
+
+        rejestracja.setOnClickListener(v -> {
+
+            String imie = imiePole.getText().toString().trim();
+            String nazwisko = nazwiskoPole.getText().toString().trim();
+            String email = emailPole.getText().toString().trim();
+
+            String haslo = hasloPole.getText().toString().trim();
+
+            if(imie.isEmpty() || nazwisko.isEmpty()
+                    || email.isEmpty() || haslo.isEmpty()) {
+
+                Toast.makeText(this,
+                        "Uzupełnij wszystkie pola",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+            if(!sprawdzEmail(email)) {
+                Toast.makeText(this,
+                        "Podaj poprawny adres email",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            String bladHasla = sprawdzHaslo(haslo);
+            if(!bladHasla.isEmpty()) {
+                Toast.makeText(this, bladHasla,
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+            Toast.makeText(this,
+                    "Dane są poprawne",
+                    Toast.LENGTH_LONG).show();
+        });
+    }
+
+
+  private boolean sprawdzEmail(String email) {
+
+        if(!email.contains("@") || !email.contains(".")) {
+            return false;
+        }else{
+        return true;
+        }
+    }
+
+
+private String sprawdzHaslo(String haslo) {
+
+        if(haslo.length() < 8) {
+            return "Hasło musi mieć co najmniej 8 znaków";
+        }
+
+        if(!haslo.matches(".*[A-Z].*")) {
+            return "Hasło musi zawierać dużą literę";
+        }
+
+        if(!haslo.matches(".*[a-z].*")) {
+            return "Hasło musi zawierać małą literę";
+        }
+
+        if(!haslo.matches(".*[^a-zA-Z0-9].*")) {
+            return "Hasło musi zawierać znak specjalny";
+        }
+
+        return "";
+    }
+}
