@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ekran"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Losowanie kostek"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ilość kostek"
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/liczbaKostek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wpisz ilość kostek"
+            android:inputType="number"
+            android:text="5"/>
+
+        <Button
+            android:id="@+id/przyciskLosuj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOSUJ"
+            android:layout_marginTop="18dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wylosowane kostki"
+            android:layout_marginTop="22dp"
+            android:textSize="21sp"
+            android:textStyle="bold"/>
+
+        <GridLayout
+            android:id="@+id/siatkaKostek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:gravity="center"
+            android:useDefaultMargins="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wyniki losowania:"
+            android:textStyle="bold"
+            android:layout_marginTop="22dp"
+            android:textSize="21sp"/>
+
+        <TextView
+            android:id="@+id/wynikiKostek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-, -, -, -, -"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:padding="12dp"/>
+
+        <Button
+            android:id="@+id/sortowanieRosnace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SORTUJ ROSNĄCO"/>
+
+        <Button
+            android:id="@+id/sortowanieMalejace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SORTUJ MALEJĄCO"/>
+
+    </LinearLayout>
+
+</ScrollView>
